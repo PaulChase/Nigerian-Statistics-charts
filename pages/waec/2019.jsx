@@ -7,38 +7,31 @@ import { useRouter } from "next/router";
 import WaecChart from "../../components/WaecChart";
 import { Tab } from "@headlessui/react";
 
-export default function WaecStats() {
-	const [states, setStates] = useState(null);
-	const [data, setData] = useState(null);
+export async function getStaticProps(context) {
+	const res = await fetch(
+		"https://script.google.com/macros/s/AKfycbx30Vg7T_C5qcOCO22CwSoX9-IN4GqRDIXSPXbHlOWZ5LAT1oqGyd_dm0QxD-t2xrBx1g/exec"
+	);
+	const data = await res.json();
 
-	useEffect(() => {
-		async function getUsers() {
-			const res = await fetch(
-				"https://script.google.com/macros/s/AKfycbx30Vg7T_C5qcOCO22CwSoX9-IN4GqRDIXSPXbHlOWZ5LAT1oqGyd_dm0QxD-t2xrBx1g/exec"
-			);
-			const data = await res.json();
+	const states = data.allStates;
+	return {
+		props: {
+			states,
+			schoolData: data,
+		}, // will be passed to the page component as props
+	};
+}
 
-			setStates(data.allStates);
-
-			setData(data);
-		}
-
-		getUsers();
-	}, []);
-
-	const router = useRouter();
-
-	const { year } = router.query;
-
+export default function WaecStats({ states, schoolData }) {
 	return (
 		<>
 			<section className=" px-4 py-6">
-				<h2 className=" text-4xl font-semibold text-green-600 text-center">{year} WAEC Data</h2>
+				<h2 className=" text-4xl font-semibold text-green-600 text-center">2019 WAEC Data</h2>
 			</section>
 
 			<Tab.Group>
 				<Tab.List>
-					<div className=" max-w-xl mx-auto mb-6 space-x-6">
+					<div className=" max-w-xl mx-auto mb-6 space-x-6 sticky top-0">
 						<Tab
 							className={({ selected }) => {
 								return selected
@@ -61,59 +54,59 @@ export default function WaecStats() {
 				</Tab.List>
 				<Tab.Panels>
 					<Tab.Panel>
-						{states && data && (
+						{states && schoolData && (
 							<div>
 								<WaecChart
 									title="Private Schools: Total Students that sat for Exam"
 									states={states}
-									data={data.totalSatForPrivateSchools}
+									data={schoolData.totalSatForPrivateSchools}
 								/>
 
 								<WaecChart
 									title="Private Schools: Total Students with 5 credits including English"
 									states={states}
-									data={data.fiveCreditsPlusEnglishPrivateSchools}
+									data={schoolData.fiveCreditsPlusEnglishPrivateSchools}
 								/>
 
 								<WaecChart
 									title="Private Schools: Total Students with 5 credits including Mathematics"
 									states={states}
-									data={data.fiveCreditsPlusMathsPrivateSchools}
+									data={schoolData.fiveCreditsPlusMathsPrivateSchools}
 								/>
 
 								<WaecChart
 									title="Private Schools: Total Students with 5 credits including both English & Mathematics"
 									states={states}
-									data={data.fiveCreditsBothEnglishAndMathsPrivateSchools}
+									data={schoolData.fiveCreditsBothEnglishAndMathsPrivateSchools}
 								/>
 							</div>
 						)}
 					</Tab.Panel>
 					<Tab.Panel>
-						{states && data && (
+						{states && schoolData && (
 							<div>
 								<WaecChart
 									title="Public Schools: Total Students that sat for Exam"
 									states={states}
-									data={data.totalSatForPublicSchools}
+									data={schoolData.totalSatForPublicSchools}
 								/>
 
 								<WaecChart
 									title="Public Schools: Total Students with 5 credits including English"
 									states={states}
-									data={data.fiveCreditsPlusEnglishPublicSchools}
+									data={schoolData.fiveCreditsPlusEnglishPublicSchools}
 								/>
 
 								<WaecChart
 									title="Public Schools: Total Students with 5 credits including Mathematics"
 									states={states}
-									data={data.fiveCreditsPlusMathsPublicSchools}
+									data={schoolData.fiveCreditsPlusMathsPublicSchools}
 								/>
 
 								<WaecChart
 									title="Public Schools: Total Students with 5 credits including both English & Mathematics"
 									states={states}
-									data={data.fiveCreditsBothEnglishAndMathsPublicSchools}
+									data={schoolData.fiveCreditsBothEnglishAndMathsPublicSchools}
 								/>
 							</div>
 						)}
