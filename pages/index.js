@@ -7,7 +7,7 @@ import HeroImage from "../public/hero.svg";
 
 export default function Home() {
 	return (
-		<MainLayout>
+		<>
 			<section className=" px-4 py-16 bg-green-100">
 				<MaxWidth>
 					<div className=" grid grid-cols-2 gap-16">
@@ -44,6 +44,6 @@ export default function Home() {
 					</div>
 				</MaxWidth>
 			</section>
-		</MainLayout>
+		</>
 	);
 }
