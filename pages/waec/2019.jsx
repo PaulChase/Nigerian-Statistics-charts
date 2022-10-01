@@ -18,11 +18,12 @@ export async function getStaticProps(context) {
 		props: {
 			states,
 			schoolData: data,
-		}, // will be passed to the page component as props
+		},
 	};
 }
 
 export default function WaecStats({ states, schoolData }) {
+	console.log(states.schoolData);
 	return (
 		<>
 			<section className=" px-4 py-6">
