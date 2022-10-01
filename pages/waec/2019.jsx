@@ -23,7 +23,7 @@ export async function getStaticProps(context) {
 }
 
 export default function WaecStats({ states, schoolData }) {
-	console.log(states.schoolData);
+	console.log(states, schoolData);
 	return (
 		<>
 			<section className=" px-4 py-6">
