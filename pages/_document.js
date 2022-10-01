@@ -1,4 +1,7 @@
+import { Chart } from "chart.js";
 import { Html, Head, Main, NextScript } from "next/document";
+
+Chart.defaults.font.family = "'Nunito Sans', sans-serif";
 
 export default function Document() {
 	return (

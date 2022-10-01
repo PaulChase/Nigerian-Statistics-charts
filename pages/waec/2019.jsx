@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "chart.js/auto";
-import { Line, Bar, Pie } from "react-chartjs-2";
-import MainLayout from "../../layouts/MainLayout";
-import MaxWidth from "../../components/MaxWidth";
-import { useRouter } from "next/router";
+
 import WaecChart from "../../components/WaecChart";
 import { Tab } from "@headlessui/react";
 
@@ -16,14 +12,20 @@ export async function getStaticProps(context) {
 	const states = data.allStates;
 	return {
 		props: {
-			states,
+			allStates: states,
 			schoolData: data,
 		},
 	};
 }
 
-export default function WaecStats({ states, schoolData }) {
-	console.log(states, schoolData);
+export default function WaecStats({ allStates, schoolData }) {
+	const [states, setStates] = useState(null);
+	const [waecData, setWaecData] = useState(null);
+
+	useEffect(() => {
+		setStates(allStates);
+		setWaecData(schoolData);
+	}, []);
 	return (
 		<>
 			<section className=" px-4 py-6">
@@ -55,59 +57,59 @@ export default function WaecStats({ states, schoolData }) {
 				</Tab.List>
 				<Tab.Panels>
 					<Tab.Panel>
-						{states && schoolData && (
+						{states && waecData && (
 							<div>
 								<WaecChart
 									title="Private Schools: Total Students that sat for Exam"
 									states={states}
-									data={schoolData.totalSatForPrivateSchools}
+									data={waecData.totalSatForPrivateSchools}
 								/>
 
 								<WaecChart
 									title="Private Schools: Total Students with 5 credits including English"
 									states={states}
-									data={schoolData.fiveCreditsPlusEnglishPrivateSchools}
+									data={waecData.fiveCreditsPlusEnglishPrivateSchools}
 								/>
 
 								<WaecChart
 									title="Private Schools: Total Students with 5 credits including Mathematics"
 									states={states}
-									data={schoolData.fiveCreditsPlusMathsPrivateSchools}
+									data={waecData.fiveCreditsPlusMathsPrivateSchools}
 								/>
 
 								<WaecChart
 									title="Private Schools: Total Students with 5 credits including both English & Mathematics"
 									states={states}
-									data={schoolData.fiveCreditsBothEnglishAndMathsPrivateSchools}
+									data={waecData.fiveCreditsBothEnglishAndMathsPrivateSchools}
 								/>
 							</div>
 						)}
 					</Tab.Panel>
 					<Tab.Panel>
-						{states && schoolData && (
+						{states && waecData && (
 							<div>
 								<WaecChart
 									title="Public Schools: Total Students that sat for Exam"
 									states={states}
-									data={schoolData.totalSatForPublicSchools}
+									data={waecData.totalSatForPublicSchools}
 								/>
 
 								<WaecChart
 									title="Public Schools: Total Students with 5 credits including English"
 									states={states}
-									data={schoolData.fiveCreditsPlusEnglishPublicSchools}
+									data={waecData.fiveCreditsPlusEnglishPublicSchools}
 								/>
 
 								<WaecChart
 									title="Public Schools: Total Students with 5 credits including Mathematics"
 									states={states}
-									data={schoolData.fiveCreditsPlusMathsPublicSchools}
+									data={waecData.fiveCreditsPlusMathsPublicSchools}
 								/>
 
 								<WaecChart
 									title="Public Schools: Total Students with 5 credits including both English & Mathematics"
 									states={states}
-									data={schoolData.fiveCreditsBothEnglishAndMathsPublicSchools}
+									data={waecData.fiveCreditsBothEnglishAndMathsPublicSchools}
 								/>
 							</div>
 						)}
