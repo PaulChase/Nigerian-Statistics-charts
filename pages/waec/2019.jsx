@@ -12,20 +12,22 @@ export async function getStaticProps(context) {
 	const states = data.allStates;
 	return {
 		props: {
-			allStates: states,
-			schoolData: data,
+			states,
+			waecData: data,
 		},
 	};
 }
 
-export default function WaecStats({ allStates, schoolData }) {
-	const [states, setStates] = useState(null);
-	const [waecData, setWaecData] = useState(null);
+export default function WaecStats({ states, waecData }) {
+	// const [states, setStates] = useState(null);
+	// const [waecData, setWaecData] = useState(null);
 
-	useEffect(() => {
-		setStates(allStates);
-		setWaecData(schoolData);
-	}, []);
+	// console.log(schoolData.totalSatForPrivateSchools);
+
+	// useEffect(() => {
+	// 	setStates(allStates);
+	// 	setWaecData(schoolData);
+	// }, []);
 	return (
 		<>
 			<section className=" px-4 py-6">
