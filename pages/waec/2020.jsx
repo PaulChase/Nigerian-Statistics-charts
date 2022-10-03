@@ -5,7 +5,7 @@ import { Tab } from "@headlessui/react";
 
 export async function getStaticProps(context) {
 	const res = await fetch(
-		"https://script.google.com/macros/s/AKfycbx30Vg7T_C5qcOCO22CwSoX9-IN4GqRDIXSPXbHlOWZ5LAT1oqGyd_dm0QxD-t2xrBx1g/exec"
+		"https://script.google.com/macros/s/AKfycbz9NxxY1289_QagpC69n9_fn9e1DKQS46hiCg9s90jBbogRIU3F3tBg3OQ8ATYZ0N4aBQ/exec"
 	);
 	const data = await res.json();
 
@@ -18,11 +18,11 @@ export async function getStaticProps(context) {
 	};
 }
 
-export default function WaecStats2019({ states, waecData }) {
+export default function WaecStats2020({ states, waecData }) {
 	return (
 		<>
 			<section className=" px-4 py-6">
-				<h2 className=" text-4xl font-semibold text-green-600 text-center">2019 WAEC Data</h2>
+				<h2 className=" text-4xl font-semibold text-green-600 text-center">2020 WAEC Data</h2>
 			</section>
 
 			<Tab.Group>

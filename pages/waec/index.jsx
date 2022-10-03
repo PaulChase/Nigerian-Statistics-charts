@@ -15,8 +15,8 @@ export default function index() {
 						<Link href={"waec/2019"}>
 							<div className=" px-4 py-6 rounded shadow-sm border bg-white flex items-center space-x-4 cursor-pointer hover:shadow-green-500">
 								<div>
-									<h3 className=" text-3xl font-semibold text-gray-700  mb-6">2019 Data</h3>
-									<p className=" text-lg">visualize Nigerian WAEC exam statistics </p>
+									<h3 className=" text-3xl font-semibold text-gray-700  mb-6">WAEC 2019</h3>
+									<p className=" text-lg">WAEC stats and charts for the year 2019</p>
 								</div>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
@@ -34,8 +34,8 @@ export default function index() {
 						<Link href={"waec/2020"}>
 							<div className=" px-4 py-6 rounded shadow-sm border bg-white flex items-center space-x-4 cursor-pointer hover:shadow-green-500">
 								<div>
-									<h3 className=" text-3xl font-semibold text-gray-700  mb-6">2020 Data</h3>
-									<p className=" text-lg">visualize Nigerian WAEC exam statistics </p>
+									<h3 className=" text-3xl font-semibold text-gray-700  mb-6">WAEC 2020</h3>
+									<p className=" text-lg">WAEC stats and charts for the year 2020 </p>
 								</div>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
@@ -53,8 +53,8 @@ export default function index() {
 						<Link href={"waec/2021"}>
 							<div className=" px-4 py-6 rounded shadow-sm border bg-white flex items-center space-x-4 cursor-pointer hover:shadow-green-500">
 								<div>
-									<h3 className=" text-3xl font-semibold text-gray-700  mb-6">2021 Data</h3>
-									<p className=" text-lg">visualize Nigerian WAEC exam statistics </p>
+									<h3 className=" text-3xl font-semibold text-gray-700  mb-6">WAEC 2021</h3>
+									<p className=" text-lg">WAEC stats and charts for the year 2021 </p>
 								</div>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
